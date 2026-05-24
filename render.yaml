@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ai-mock-interview
+    env: python
+    buildCommand: ./build.sh
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
